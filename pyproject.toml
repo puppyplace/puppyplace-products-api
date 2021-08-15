@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "puppyplace-products-api"
+version = "0.1.0"
+description = ""
+authors = ["Beatriz Uezu <beatriz.uezu@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^3.2.6"
+djangorestframework = "^3.12.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pytest-django = "^4.4.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

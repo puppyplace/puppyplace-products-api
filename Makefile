@@ -14,3 +14,9 @@ clean-build:
 install-deps:
 	pip install poetry
 	poetry install
+
+run:
+	poetry run python manage.py runserver
+
+test:
+	poetry run pytest

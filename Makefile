@@ -10,7 +10,6 @@ clean-build:
 	@rm -fr dist/
 	@rm -fr *.egg-info
 
-
 install-deps:
 	pip install poetry
 	poetry install
@@ -19,4 +18,13 @@ run:
 	poetry run python manage.py runserver
 
 test:
-	poetry run pytest
+	poetry run pytest -x -s
+
+pyformat:
+	blue .
+
+check-dead-fixtures:
+	poetry run pytest --dead-fixtures
+
+migrate:
+	poetry run python manage.py migrate

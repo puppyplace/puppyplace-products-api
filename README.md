@@ -3,10 +3,10 @@
 This project uses:
 - Python 3.9
 - Poetry
-- Django 
+- Django
 - Django Rest Framework
 - MS SQL Server
- 
+
 
 ## How to install
 

@@ -1,15 +1,13 @@
 from rest_framework import serializers
-
 from apps.products.models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
-    name = serializers.CharField()
 
     class Meta:
         model = Product
-        fields = ['id', 'name']
+        fields = '__all__'
         read_only_fields = ('id',)
 
     def create(self, validated_data):
@@ -19,5 +17,5 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductDetailSerializer(ProductSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'name']
+        fields = '__all__'
         lookup_url_kwarg = 'id'

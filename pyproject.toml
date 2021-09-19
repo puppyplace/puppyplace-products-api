@@ -17,9 +17,13 @@ default_section = "THIRDPARTY"
 [tool.poetry.dependencies]
 python = "^3.9"
 
+dj-database-url = "^0.5.0"
 Django = "^3.2.6"
 djangorestframework = "^3.12.4"
+mssql-django = "^1.0"
 prettyconf = "^2.2.1"
+pyodbc = "^4.0.32"
+python-decouple = "^3.4"
 
 [tool.poetry.dev-dependencies]
 blue = "^0.7.0"
@@ -32,6 +36,7 @@ pytest = "^5.2"
 pytest-cov = "^2.12.1"
 pytest-deadfixtures = "^2.2.1"
 pytest-django = "^4.4.0"
+pytest-icdiff = "^0.5"
 pytest-envvars = "^1.2.1"
 pytest-randomly = "^3.10.1"
 

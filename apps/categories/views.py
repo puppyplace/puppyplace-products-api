@@ -1,13 +1,7 @@
-from rest_framework.generics import (
-    ListCreateAPIView,
-    RetrieveUpdateDestroyAPIView,
-)
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from apps.categories.models import Category
-from apps.categories.serializers import (
-    CategoryDetailSerializer,
-    CategorySerializer,
-)
+from apps.categories.serializers import CategoryDetailSerializer, CategorySerializer
 
 
 class CategoryView(ListCreateAPIView):

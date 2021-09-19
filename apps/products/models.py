@@ -9,11 +9,11 @@ class Product(models.Model):
     created_at = models.DateField(auto_now_add=True)
     description = models.CharField(max_length=255)
     title = models.CharField(max_length=50)
-    avatarUrl = models.CharField(max_length=255)
+    avatar_url = models.CharField(max_length=255)
     stock = models.IntegerField()
     price = models.FloatField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    partner = models.UUIDField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    partner = models.UUIDField(null=True)
 
 
     def __str__(self):

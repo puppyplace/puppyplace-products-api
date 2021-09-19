@@ -9,6 +9,7 @@ from apps.products.serializers import (
     ProductSerializer,
 )
 
+
 class ProductsView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -17,4 +18,3 @@ class ProductsView(ListCreateAPIView):
 class ProductDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductDetailSerializer
-

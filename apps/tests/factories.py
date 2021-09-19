@@ -14,6 +14,7 @@ class CategoryFactory(factory.django.DjangoModelFactory):
     id = factory.LazyFunction(uuid4)
     name = factory.Sequence(lambda n: f'category_{n}')
 
+
 class ProductFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Product
@@ -27,4 +28,3 @@ class ProductFactory(factory.django.DjangoModelFactory):
     stock = factory.fuzzy.FuzzyInteger(1)
     price = factory.fuzzy.FuzzyFloat(42.7)
     category = factory.SubFactory(CategoryFactory)
-    

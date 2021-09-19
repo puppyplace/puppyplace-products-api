@@ -17,7 +17,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Product',
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                (
+                    'id',
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
                 ('created_at', models.DateField(auto_now_add=True)),
                 ('description', models.CharField(max_length=255)),
                 ('title', models.CharField(max_length=50)),
@@ -25,7 +33,13 @@ class Migration(migrations.Migration):
                 ('stock', models.IntegerField()),
                 ('price', models.FloatField()),
                 ('partner', models.UUIDField()),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='categories.category')),
+                (
+                    'category',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='categories.category',
+                    ),
+                ),
             ],
         ),
     ]

@@ -1,9 +1,10 @@
+from uuid import uuid4
 import pytest
 from rest_framework import status
 from rest_framework.test import APIClient
 
 from apps.categories.models import Category
-from apps.tests.factories import CategoryFactory
+from apps.tests.factories import CategoryFactory, ProductFactory
 
 pytestmark = pytest.mark.django_db
 
@@ -92,3 +93,25 @@ class TestCategoryDetailView:
             self.url.format(123), data={'name': 'new category name'}
         )
         assert response.status_code == status.HTTP_404_NOT_FOUND
+
+
+class TestProductPerCategoryView:
+    url = '/api/v1/categories/{}/products'
+
+    def test_product_per_category_successfully(self, client, categories):
+        category = categories[0]
+        product = ProductFactory(category=category)
+        ProductFactory.create_batch(2)
+
+        response = client.get(self.url.format(category.id))
+        assert response.status_code == status.HTTP_200_OK
+        
+        response_json = response.json()
+        assert len(response_json) == 1
+        assert response_json[0]['id'] == str(product.id)
+    
+
+    def test_product_per_category_when_category_id_not_found(self, client):
+        response = client.get(self.url.format(uuid4()))
+        assert response.status_code == status.HTTP_200_OK
+        assert response.json() == []

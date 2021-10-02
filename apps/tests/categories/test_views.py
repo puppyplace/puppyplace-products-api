@@ -1,4 +1,5 @@
 from uuid import uuid4
+
 import pytest
 from rest_framework import status
 
@@ -38,6 +39,7 @@ class TestCategoryView:
         response_json = response.json()
         assert len(response_json) == 2
 
+
 class TestCategoryDetailView:
     url = '/api/v1/categories/{}'
 
@@ -54,9 +56,7 @@ class TestCategoryDetailView:
     def test_update_category_succefully(self, client, categories):
         category = categories[0]
         new_category_name = 'new category name'
-        response = client.patch(
-            self.url.format(category.id), data={'name': new_category_name}
-        )
+        response = client.patch(self.url.format(category.id), data={'name': new_category_name})
         assert response.status_code == status.HTTP_200_OK
 
         response_json = response.json()
@@ -78,9 +78,7 @@ class TestCategoryDetailView:
     )
     def test_category_with_not_found_id(self, action, client):
         client_request = getattr(client, action)
-        response = client_request(
-            self.url.format(123), data={'name': 'new category name'}
-        )
+        response = client_request(self.url.format(123), data={'name': 'new category name'})
         assert response.status_code == status.HTTP_404_NOT_FOUND
 
 
@@ -93,11 +91,10 @@ class TestProductPerCategoryView:
 
         response = client.get(self.url.format(category.id))
         assert response.status_code == status.HTTP_200_OK
-        
+
         response_json = response.json()
         assert len(response_json) == 1
         assert response_json[0]['id'] == str(product.id)
-    
 
     def test_product_per_category_when_category_id_not_found(self, client):
         response = client.get(self.url.format(uuid4()))

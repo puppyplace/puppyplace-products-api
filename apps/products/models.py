@@ -1,8 +1,9 @@
-from django.db.models.deletion import CASCADE
-from apps.categories.models import Category
 from uuid import uuid4
 
 from django.db import models
+from django.db.models.deletion import CASCADE
+
+from apps.categories.models import Category
 
 
 class Product(models.Model):

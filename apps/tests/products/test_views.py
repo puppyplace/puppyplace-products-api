@@ -60,10 +60,6 @@ class TestProductView:
 
         response_json = response.json()
         assert len(response_json) == 2
-        assert response_json[0]['id'] == str(products[0].id)
-        assert response_json[0]['title'] == products[0].title
-        assert response_json[0]['description'] == products[0].description 
-        assert response_json[0]['avatar_url'] == products[0].avatar_url 
 
 
 class TestProductDetailView:

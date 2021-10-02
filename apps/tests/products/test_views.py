@@ -1,21 +1,9 @@
 import pytest
 from rest_framework import status
-from rest_framework.test import APIClient
 
 from apps.products.models import Product
-from apps.tests.factories import ProductFactory
 
 pytestmark = pytest.mark.django_db
-
-
-@pytest.fixture
-def client():
-    return APIClient()
-
-
-@pytest.fixture
-def products():
-    return ProductFactory.create_batch(2)
 
 
 class TestProductView:

@@ -1,22 +1,11 @@
 from uuid import uuid4
 import pytest
 from rest_framework import status
-from rest_framework.test import APIClient
 
 from apps.categories.models import Category
 from apps.tests.factories import CategoryFactory, ProductFactory
 
 pytestmark = pytest.mark.django_db
-
-
-@pytest.fixture
-def client():
-    return APIClient()
-
-
-@pytest.fixture
-def categories():
-    return CategoryFactory.create_batch(2)
 
 
 class TestCategoryView:
@@ -98,10 +87,9 @@ class TestCategoryDetailView:
 class TestProductPerCategoryView:
     url = '/api/v1/categories/{}/products'
 
-    def test_product_per_category_successfully(self, client, categories):
+    def test_product_per_category_successfully(self, client, categories, products):
         category = categories[0]
         product = ProductFactory(category=category)
-        ProductFactory.create_batch(2)
 
         response = client.get(self.url.format(category.id))
         assert response.status_code == status.HTTP_200_OK

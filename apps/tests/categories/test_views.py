@@ -47,9 +47,6 @@ class TestCategoryView:
 
         response_json = response.json()
         assert len(response_json) == 2
-        assert response_json[0]['id'] == str(categories[0].id)
-        assert response_json[0]['name'] == categories[0].name
-
 
 class TestCategoryDetailView:
     url = '/api/v1/categories/{}'

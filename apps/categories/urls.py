@@ -1,7 +1,10 @@
 from django.urls import path
-from django.urls.conf import include
 
-from apps.categories.views import CategoryDetailView, CategoryView
+from apps.categories.views import (
+    CategoryDetailView,
+    CategoryView,
+    ProductPerCategoryView,
+)
 
 urlpatterns = [
     path('categories/', CategoryView.as_view(), name='categories-list'),
@@ -9,5 +12,10 @@ urlpatterns = [
         'categories/<uuid:pk>',
         CategoryDetailView.as_view(),
         name='category-detail',
+    ),
+    path(
+        'categories/<uuid:category_id>/products',
+        ProductPerCategoryView.as_view(),
+        name='categorie-product-list',
     ),
 ]

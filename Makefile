@@ -20,8 +20,8 @@ run:
 test:
 	poetry run pytest -x -s
 
-pyformat:
-	blue .
+lint:
+	isort . && blue . 
 
 check-dead-fixtures:
 	poetry run pytest --dead-fixtures

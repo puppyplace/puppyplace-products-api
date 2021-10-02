@@ -14,6 +14,11 @@ known_local_folder = "apps,tests"
 sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 default_section = "THIRDPARTY"
 
+[tool.blue]
+line-length = 110
+target-version = ["py39"]
+
+
 [tool.poetry.dependencies]
 python = "^3.9"
 
